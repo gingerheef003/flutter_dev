@@ -64,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
       List<String> credentials = await _getCredentials();
       final username = credentials[0];
       final password = credentials[1];
-      print('$username, $password');
 
       final loginResponse = await http.get(
         Uri.parse(loginUrl),
@@ -105,10 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
           'approveBtn': '',
         },
       );
-      if (approveResponse.statusCode != 302)
+      if (approveResponse.statusCode != 302) {
         throw Exception('Failed to approve duration.');
+      }
 
-      print('Net accessed');
     } catch (e) {
       print('Error: $e');
     }
